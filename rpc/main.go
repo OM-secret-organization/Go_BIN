@@ -42,5 +42,4 @@ func Run  () {
 	fmt.Println("Unmarshal", info2)
 	fmt.Printf("%+v\n", info2) // +를 붙이면 구조체의 필드까지 같이 표시됨.
 
-	// 하... 자바스크립트에서는 JSON.parse랑 JSON.stringify만 있으면 뚝딱이었는데 진짜 개귀찮고 어렵다.... 슬프다.....
 }
