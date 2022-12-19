@@ -48,21 +48,7 @@ func main () {
 				fmt.Println(err)
 				panic(err)
 			}
-			fmt.Println(tx.Type)
 			fmt.Printf("트랜잭션 : %+v\n", tx)
-
-		// 	for _, hash := range list {
-		// 		switch hash.Type {
-		// 		case "BTC" :
-		// 			fmt.Println("BTC hash list came")
-				
-		// 		case "ETH" :
-		// 			fmt.Println("ETH hash list came")
-
-		// 		case "XRP" : 
-		// 			fmt.Println("XRP hash list came")
-		// 	}
-		// }
 	}
 	}()
 
@@ -80,7 +66,7 @@ type HashList struct {
 type Transaction struct {
 	To string `json:"to"`
 	From string `json:"from"`
-	Quantity interface{} `json:"quantity"`
+	Quantity string `json:"quantity"`
 	TxHash string `json:"txHash"`
-	Type string `json:"type"`
+	Error bool `json:"error"`
 }
