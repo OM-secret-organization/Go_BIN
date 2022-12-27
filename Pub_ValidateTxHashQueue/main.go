@@ -9,7 +9,7 @@ import (
 func main() {
 	fmt.Println("Go RabbitMQ Tutorial")
 
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@hanbin.shop:5672/")
 	if err != nil {
 		fmt.Println(err)
 		panic(err)
@@ -48,20 +48,13 @@ func main() {
 		false,
 		amqp.Publishing{
 			ContentType: "application/json",
-			Body: []byte(`[
-    {
-			"type" : "BTC",
-			"txHash" : ["334a9c3af912a579c8e6ee0931a0c8df1b84f0d802701cae852ebe1ba4880189", "7c78ed008cd0618577661e6fc72bf00fa20dd3a10bdb0777ac369b7874ea7564"]
-		},
-		{
-			"type" : "ETH",
-			"txHash" : ["0xa6c24f17dc3b168acd8e119ded5f17860ec0e5fe2e6c33b56b875b71787659d1", "0x7c5135f7c6c3817deb8cab89f745188e738d07e1376fc58ef1d1abb27b5e1f5c"]
-		},
-		{
-			"type" : "XRP",
-			"txHash" : ["9C1C3943F6139275B9E4BEBE53AFA829A45F4CE3A536E0A07E9AE3B636EF5A4B", "C64219689E978D767EA428D8CE24DA60AB4ABD0A190CFFDB23944F842A0F06C0"]
-		}
-	]`),
+			Body: []byte(`{
+				"transactions": {
+					"XRP": ["9C1C3943F6139275B9E4BEBE53AFA829A45F4CE3A536E0A07E9AE3B636EF5A4B", "C64219689E978D767EA428D8CE24DA60AB4ABD0A190CFFDB23944F842A0F06C1"],
+					"BTC": ["334a9c3af912a579c8e6ee0931a0c8df1b84f0d802701cae852ebe1ba4880189", "7c78ed008cd0618577661e6fc72bf00fa20dd3a10bdb0777ac369b7874ea7564"],
+					"ETH": ["0xa6c24f17dc3b168acd8e119ded5f17860ec0e5fe2e6c33b56b875b71787659d1", "0x7c5135f7c6c3817deb8cab89f745188e738d07e1376fc58ef1d1abb27b5e1f5c"]
+				}
+			}`),
 		},
 	)
 
@@ -74,3 +67,28 @@ func main() {
 	fmt.Println("Retract TxHash Published", q)
 
 }
+
+
+// `{
+//   "transactions": {
+//     "XRP": ["9C1C3943F6139275B9E4BEBE53AFA829A45F4CE3A536E0A07E9AE3B636EF5A4B", "C64219689E978D767EA428D8CE24DA60AB4ABD0A190CFFDB23944F842A0F06C0"],
+//     "BTC": ["334a9c3af912a579c8e6ee0931a0c8df1b84f0d802701cae852ebe1ba4880189", "7c78ed008cd0618577661e6fc72bf00fa20dd3a10bdb0777ac369b7874ea7564"],
+//     "ETH": ["0xa6c24f17dc3b168acd8e119ded5f17860ec0e5fe2e6c33b56b875b71787659d1", "0x7c5135f7c6c3817deb8cab89f745188e738d07e1376fc58ef1d1abb27b5e1f5c"]
+//   }
+// }`
+
+
+// `[
+//     {
+// 			"type" : "BTC",
+// 			"txHash" : ["334a9c3af912a579c8e6ee0931a0c8df1b84f0d802701cae852ebe1ba4880189", "7c78ed008cd0618577661e6fc72bf00fa20dd3a10bdb0777ac369b7874ea7564"]
+// 		},
+// 		{
+// 			"type" : "ETH",
+// 			"txHash" : ["0xa6c24f17dc3b168acd8e119ded5f17860ec0e5fe2e6c33b56b875b71787659d1", "0x7c5135f7c6c3817deb8cab89f745188e738d07e1376fc58ef1d1abb27b5e1f5c"]
+// 		},
+// 		{
+// 			"type" : "XRP",
+// 			"txHash" : ["9C1C3943F6139275B9E4BEBE53AFA829A45F4CE3A536E0A07E9AE3B636EF5A4B", "C64219689E978D767EA428D8CE24DA60AB4ABD0A190CFFDB23944F842A0F06C0"]
+// 		}
+// 	]`

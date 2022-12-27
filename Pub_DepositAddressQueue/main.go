@@ -9,7 +9,7 @@ import (
 func main() {
 	fmt.Println("Go RabbitMQ Tutorial")
 
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@hanbin.shop:5672/")
 	if err != nil {
 		fmt.Println(err)
 		panic(err)
@@ -56,7 +56,7 @@ func main() {
 		},
 		{
 			"type" : "ETH",
-			"address" : ["0xF1fD681a123b19c64110E03AB3F00fD16e9ec185", "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"]
+			"address" : ["0xeBec795c9c8bBD61FFc14A6662944748F299cAcf"]
 		},
 		{
 			"type" : "XRP",

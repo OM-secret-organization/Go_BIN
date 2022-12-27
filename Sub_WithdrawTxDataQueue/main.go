@@ -10,7 +10,7 @@ import (
 func main () {
 	fmt.Println("Consumer run")
 
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/") // 여기 url 설정을 맞춰주면 통신 가능!
+	conn, err := amqp.Dial("amqp://guest:guest@hanbin.shop:5672/") // 여기 url 설정을 맞춰주면 통신 가능!
 	if err != nil {
 		fmt.Println(err)
 		panic(err)
